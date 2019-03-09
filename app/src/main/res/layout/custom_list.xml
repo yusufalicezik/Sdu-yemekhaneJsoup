@@ -5,45 +5,57 @@
     android:id="@+id/allLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="5dp"
     android:background="@color/colorPrimary">
 
     <TextView
         android:id="@+id/customTextGun"
-        android:layout_width="wrap_content"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="monospace"
         android:text="TextView"
-        android:textColor="@android:color/background_light"
+        android:textAlignment="center"
+        android:textColor="@color/mybeyaz"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/customTextTarih"
-        android:layout_width="wrap_content"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="monospace"
         android:text="TextView"
-        android:textColor="@android:color/background_light"
+        android:textAlignment="center"
+        android:textColor="@color/mybeyaz"
         android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/customTextGun"
-        app:layout_constraintStart_toStartOf="@+id/customTextGun"
-        app:layout_constraintTop_toBottomOf="@+id/customTextGun" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customTextGun"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/customTextYemekListesi"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="ViewTTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextView"
-        android:textColor="@android:color/background_light"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:fontFamily="monospace"
+        android:textAlignment="center"
+        android:textColor="@color/mybeyaz"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/customTextTarih"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/customTextTarih"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/customTextGun" />
 </android.support.constraint.ConstraintLayout>

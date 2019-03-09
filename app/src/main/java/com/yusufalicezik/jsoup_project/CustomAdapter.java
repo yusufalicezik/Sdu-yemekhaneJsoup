@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -59,6 +62,9 @@ public class CustomAdapter extends  RecyclerView.Adapter<CustomAdapter.CustomAda
 
         int dayOfWeek=GregorianCalendar.get(takvim.DAY_OF_WEEK);
 
+
+
+
         String currentGun;
         switch (dayOfWeek){
             case 1:currentGun="Pazartesi";
@@ -76,15 +82,56 @@ public class CustomAdapter extends  RecyclerView.Adapter<CustomAdapter.CustomAda
                 break;
         }
 
+    ///
+        String[]dizi=holder.tarih.getText().toString().split("\\.");
+
+            int sayisalGun = Integer.valueOf(dizi[0]);
+            int sayisalAy = Integer.valueOf(dizi[1]);
+
+
+
+
+
+
+
+
+        ///
+
 
         //eğer bugünse arkaplanı değiştir.
         if(currentGun.equalsIgnoreCase(tumYemekler.get(i).getGun())){
-            holder.allLayout.setBackgroundColor(Color.RED);
+
+
+            int geciciAy=ay+1;
+            int geciciGun=gun+1;
+
+
+            if(sayisalAy==geciciAy && sayisalGun==geciciGun) {
+                holder.allLayout.setBackgroundColor(ResourcesCompat.getColor(mContext.getResources(), R.color.colorPrimaryDark3, null));
+                MainActivity.bugünTxt.setText(tumYemekler.get(i).getYemekListesi());
+                Log.e("suanyyy:", String.valueOf(geciciAy+"."+geciciGun));
+                Log.e("cumaolanlaryyy:", String.valueOf(sayisalAy+"."+sayisalGun));
+            }else{
+                holder.allLayout.setBackgroundColor(ResourcesCompat.getColor(mContext.getResources(), R.color.colorPrimaryDark4, null));
+            }
+            Log.e("cumaolanlar:", String.valueOf(sayisalAy+"."+sayisalGun));
+            Log.e("suan:", String.valueOf(geciciAy+"."+geciciGun));
+
+
+
+
+
+        }else{
+            holder.allLayout.setBackgroundColor(ResourcesCompat.getColor(mContext.getResources(), R.color.colorPrimaryDark4, null));
+
         }
 
 
 
+
     }
+
+
 
     @Override
     public int getItemCount() {

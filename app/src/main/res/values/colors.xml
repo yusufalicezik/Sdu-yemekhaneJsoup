@@ -3,4 +3,10 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimaryDark1">#aeb78232</color>
+    <color name="colorPrimaryDark2">#9e6da39b</color>
+    <color name="colorPrimaryDark4">#8dabe9e0</color>
+    <color name="colorPrimaryDark3">#cfd8edea</color>
+    <color name="mybeyaz">#f707763a</color>
+    <color name="transp">#00f7f7f7</color>
 </resources>

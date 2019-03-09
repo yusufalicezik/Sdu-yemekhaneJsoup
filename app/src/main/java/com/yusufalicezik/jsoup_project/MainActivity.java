@@ -6,10 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -35,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView listem;
     CustomAdapter adapter;
 
+    static TextView bugünTxt;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         listem=findViewById(R.id.listem);
+        bugünTxt=findViewById(R.id.txtBugun);
 
         adapter=new CustomAdapter(tumYemekler,MainActivity.this);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(MainActivity.this);
@@ -99,10 +104,17 @@ public class MainActivity extends AppCompatActivity {
 
 
                     Elements yemekler = doc.select("span#cph_body_dgYemekListesi_Label3_"+String.valueOf(i));
+
+                    String text =yemekler.first().html();
+                    text = text.replaceAll("<br />", "\n");
+
+                    String sonText=donustur(text);
+
+
                     Elements tarihler = doc.select("span#cph_body_dgYemekListesi_Label1_"+String.valueOf(i));
                     Elements gunler = doc.select("span#cph_body_dgYemekListesi_Label2_"+String.valueOf(i));
 
-                    yemekListesi.add(yemekler.first().text());
+                    yemekListesi.add(sonText);
                     tarihListesi.add(tarihler.first().text());
                     tarihListesiGunler.add(gunler.first().text());
                 }
@@ -146,5 +158,14 @@ public class MainActivity extends AppCompatActivity {
             adapter.notifyDataSetChanged();
 
         }
+    }
+
+    private String donustur(String text) {
+        String donecek;
+        donecek=text.replaceAll("&Ccedil;","Ç");
+        donecek=donecek.replaceAll("&Ouml;","Ö");
+        donecek=donecek.replaceAll("&Uuml;","Ü");
+
+        return donecek;
     }
 }
